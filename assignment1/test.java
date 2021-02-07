@@ -7,7 +7,8 @@ public class test {
         Basket basket = new Basket();
         basket.add(new Egg("NoEgg", 0, 4));
         basket.add(new Fruit("Fuji Apple", 2.0, 100));
-        System.out.println(basket.toString());
+        // Comment out the line after if you want to see what your program prints
+        // System.out.println(basket.toString());
         String expected = "NoEgg\t-\n" +
                 "Fuji Apple\t2.00\n" +
                 "\n" +
