@@ -20,7 +20,7 @@ public class test {
         String actual = basket.toString().trim();
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
-        System.out.println("Basket toString test passed. ");
+        System.out.println("Basket toString test passed. Good job!");
     }
     
   // This method tests if the only item taxed in the basket is Jam (No tax on Egg and fruit)
@@ -42,7 +42,7 @@ public class test {
         // System.out.println(basket2.toString());
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
-        System.out.println("Basket toString test passed. ");
+        System.out.println("Basket toString test2 passed. Treat yourself with a shot of Java Coffee!");
     }
   
     //equals() test for Jam, testing if two Jams of the same price match
@@ -102,7 +102,7 @@ public class test {
             throw new AssertionError("There were " + originalNumberOfProducts + " Products, the tester removed 2. You have" + numberOfProducts);
         }
 
-        System.out.println("Basket remove test passed.");
+        System.out.println("Basket remove test passed. I'm sure Prof.Alberini will be proud of you.");
     }
   
     public static void main(String[] args) {
