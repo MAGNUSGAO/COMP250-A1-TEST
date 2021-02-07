@@ -587,6 +587,29 @@ class Basket_toString_two_decimals implements Runnable{
     }
 }
 
+class  test_Basket_toString implements Runnable {
+    @Override
+
+    public void run() {
+        Basket basket = new Basket();
+        basket.add(new Egg("FreeEgg", 100, 0));
+        basket.add(new Fruit("Fuji Apple", 2.0, 100));
+        // Comment out the line after if you want to see what your program prints
+        // System.out.println(basket.toString());
+        String expected = "FreeEgg\t-\n" +
+                "Fuji Apple\t2.00\n" +
+                "\n" +
+                "Subtotal\t2.00\n" +
+                "Total Tax\t-\n" +
+                "\n" +
+                "Total Cost\t2.00";
+        String actual = basket.toString().trim();
+        if (!actual.equals(expected)){
+            throw new AssertionError("Incorrect format ");}
+        System.out.println("Basket toString test passed. ");
+    }
+}
+
 class  test_Basket_Jam_toString implements Runnable {
     @Override
     public void run() {
@@ -710,6 +733,7 @@ public class A1_Minitester {
 "assignment1.Customer_checkOutReceipt_products_0",
 "assignment1.Basket_toString_two_decimals",
  "assignment1.fullBasket_2",
+"assignment1.test_Basket_toString",
 "assignment1.test_Basket_Jam_toString",
             "assignment1.Jam_Equal1",
 "assignment1.Jam_Equal2",
