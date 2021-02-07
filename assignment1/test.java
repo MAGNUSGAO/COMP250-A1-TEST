@@ -44,8 +44,33 @@ public class test {
         System.out.println("Basket toString test passed. ");
     }
   
+    //equals() test for Jam, testing if two Jams of the same price match
+    public static void Jam_Equal1(){
+        Jam tomatoJam = new Jam("tomatoJam", 12, 120);
+        Jam expensiveTomatoJam = new Jam("tomatoJam", 6, 240);
+        if(tomatoJam.equals(expensiveTomatoJam)){
+            throw new AssertionError("The two have the same cost, but they aren't equal.");
+        }else{
+            System.out.println("Jam_Equal1 Passed successfully! Good Job Future Steve Jobs!");
+        }
+
+    }
+
+    //equals() test for Jam, testing with Jam and a random Object
+    public static void Jam_Equal2() {
+        Jam tomatoJam = new Jam("tomatoJam", 12, 120);
+        Object randomObject = new Object();
+        if (tomatoJam.equals(randomObject)) {
+            throw new AssertionError("Equal2 failed. You can't compare Jam with another RandomObject!");
+        } else {
+            System.out.println("Jam_Equal2 Passed successfully! You'll get that FAANG internship!");
+        }
+    }
+  
     public static void main(String[] args) {
         test_Basket_toString();
         test_Basket_Jam_toString();
+        Jam_Equal1();
+        Jam_Equal2();
     }
 }
