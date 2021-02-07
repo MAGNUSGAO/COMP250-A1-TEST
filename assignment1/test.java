@@ -1,4 +1,5 @@
 package assignment1;
+import java.util.Arrays;
 
 public class test {
   // Test the output of Basket toString
@@ -66,11 +67,51 @@ public class test {
             System.out.println("Jam_Equal2 Passed successfully! You'll get that FAANG internship!");
         }
     }
+    
+    // this basket_remove checks these things: whether the items were removed, how many items are left
+    public static void Basket_Remove2() {
+        Basket myBasket = new Basket();
+        myBasket.add(new Egg("organic Eggs",5,380));
+        myBasket.add(new Fruit("Fruit1",1.2,380));
+        myBasket.add(new Fruit("Fruit1",1.2,380));
+        myBasket.add(new Fruit("red Berry",1.5,380));
+        myBasket.add(new Fruit("Random fruit",1.1,340));
+        int originalNumberOfProducts = myBasket.getProducts().length;
+        Boolean a = myBasket.remove(new Fruit("Fruit1",1.2,380));
+        Boolean b = myBasket.remove(new Egg("organic Eggs",5,380));
+        //System.out.println(Arrays.toString(myBasket.getProducts()));
+
+        // check how many items there are left
+        int numberOfProducts = 0;
+        for (int i = 0; i < (myBasket.getProducts().length); i++){
+            if (myBasket.getProducts()[i] != null){
+                numberOfProducts ++;
+            }
+        }
+        int difference = originalNumberOfProducts - numberOfProducts;
+        if(!a || !b){
+
+            throw new AssertionError("Expected: " + "a=true & b=false"
+                    + " but obtained: " + "a=" + a + " & b=" + b);
+            //test if there are nulls in the array
+        } else if (numberOfProducts < (myBasket.getProducts().length)){
+          System.out.println(Arrays.toString(myBasket.getProducts()));
+          throw new AssertionError("There is a null in your array. If it is at the end, don't worry. If not, check if there's empty slot in your array");
+            // tells you how many products are left
+        } else if ((difference) != 2){
+            throw new AssertionError("There were " + originalNumberOfProducts + " Products, the tester removed 2. You have" + numberOfProducts);
+        }
+
+        System.out.println("Basket remove test passed.");
+    }
   
     public static void main(String[] args) {
         test_Basket_toString();
         test_Basket_Jam_toString();
         Jam_Equal1();
         Jam_Equal2();
+        // Basket_remove2 assumes there's no empty space in your array at the end. If you have empty slots at the end, they are allowed, but not preferred
+        Basket_Remove2();
+     
     }
 }
