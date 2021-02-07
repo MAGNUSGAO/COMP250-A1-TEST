@@ -5,7 +5,7 @@ public class test {
     // This method tests whether the program outputs "-" for prices when a product's price is 0 (aka Free!)
     public static void test_Basket_toString() {
         Basket basket = new Basket();
-        basket.add(new Egg("NoEgg", 0, 4));
+        basket.add(new Egg("NoEgg", 100, 0));
         basket.add(new Fruit("Fuji Apple", 2.0, 100));
         // Comment out the line after if you want to see what your program prints
         // System.out.println(basket.toString());
