@@ -460,6 +460,7 @@ class fullBasket implements Runnable{
                 "\n" +
                 "Total Cost\t4.00";
         String actual = basket1.toString().trim();
+        System.out.println("Expected: \n" + expected + "\n" + "\nReceived: \n" + actual);
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
         System.out.println("Basket toString test passed. ");
@@ -479,6 +480,7 @@ class fullBasket implements Runnable{
                 "\n" +
                 "Total Cost\t2.85";
        actual = basket1.toString().trim();
+        System.out.println("Expected: \n" + expected + "\n" + "\nReceived: \n" + actual);
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
         System.out.println("Basket toString test passed. ");
@@ -495,6 +497,7 @@ class fullBasket implements Runnable{
                 "\n" +
                 "Total Cost\t-";
         actual = basket1.toString().trim();
+        System.out.println("Expected: \n" + expected + "\n" + "\nReceived: \n" + actual);
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
         System.out.println("Empty Basket toString test passed. ");
@@ -520,6 +523,7 @@ class fullBasket_2 implements Runnable {
                 "\n" +
                 "Total Cost\t2.00";
         String actual = basket.toString().trim();
+        System.out.println("Expected: \n" + expected + "\n" + "\nReceived: \n" + actual);
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
         System.out.println("Basket toString test passed. ");
@@ -580,7 +584,7 @@ class Basket_toString_two_decimals implements Runnable{
                 "\n" +
                 "Total Cost\t129.00";
         String actual = basket.toString().trim();
-        //System.out.println(actual);
+        System.out.println("Expected: \n" + expected + "\n" + "\nReceived: \n" + actual);
         if (!actual.equals(expected))
             throw new AssertionError("Incorrect format ");
         System.out.println("Basket toString test passed. ");
@@ -604,6 +608,7 @@ class  test_Basket_toString implements Runnable {
                 "\n" +
                 "Total Cost\t2.00";
         String actual = basket.toString().trim();
+        System.out.println("Expected: \n" + expected + "\n" + "\nReceived: \n" + actual);
         if (!actual.equals(expected)){
             throw new AssertionError("Incorrect format ");}
         System.out.println("Basket toString test passed. ");
@@ -756,5 +761,9 @@ public class A1_Minitester {
             }
         }
         System.out.printf("%n%n%d of %d tests passed.%n", numPassed, tests.length);
+
+        if(numPassed == tests.length){
+            System.out.println("All clear! Now get some rest.");
+        }
     }
 }
