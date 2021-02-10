@@ -704,9 +704,107 @@ class Basket_Remove2 implements Runnable {
 
     }
 }
+
+class Basket_NullComparison implements Runnable{
+
+	@Override
+	public void run() {
+		Fruit f = null;
+		Fruit f1 = new Fruit("suwoop", 2.3, 400);
+		Fruit f2 = new SeasonalFruit("suwoop", 2.3, 400);
+		if (f2.equals(f1)) {
+			System.out.println("Interesting...");
+		}
+		else {
+			System.out.println("Normal");
+		}
+		if (f1.equals(f)) {
+			throw new AssertionError("Comparing fruit to null returns equal");
+		}
+		System.out.println("Successfully compared fruit to null.");
+	}
+	
+}
+
+class Basket_getProducts implements Runnable{
+	@Override
+	public void run() {
+		Basket basket = new Basket();
+        basket.add(new Egg("brown", 24, 4));
+        basket.add(new Fruit("Kiwi", 2.0, 100));
+        basket.add(new Jam("jam", 2, 475));
+        basket.add(new SeasonalFruit("Kiwi", 2.0, 100));
+        MarketProduct[] tmp = basket.getProducts();
+        tmp[0] = new Fruit("Grape", 22, 100);
+        MarketProduct[] tmp2 = basket.getProducts();
+        if (tmp[0] == tmp2[0]) {
+        	throw new AssertionError("Basket.getProducts() returns live reference to underlying array!");
+        }
+        System.out.println("Basket.getProducts() returns at least a shallow copy");
+	}
+	
+}
+
+class Basket_DifferentComparison implements Runnable{
+	@Override
+	public void run() {
+		Basket basket = new Basket();
+        basket.add(new Egg("brown", 24, 4));
+        basket.add(new Fruit("Kiwi", 2.0, 100));
+        basket.add(new Jam("jam", 2, 475));
+        basket.add(new SeasonalFruit("Kiwi", 2.0, 100));
+        for (int i = 0; i < basket.getNumOfProducts(); i++) {
+        	for (int j = i + 1; j < basket.getNumOfProducts(); j++) {
+        		if (basket.getProducts()[i] == basket.getProducts()[j]) {
+        			throw new AssertionError("Object " + basket.getProducts()[i] + " and " + basket.getProducts()[j] + 
+        					" are said to be equal, but they aren't.");
+        		}
+        	}
+        }
+        System.out.println("All combinations of different MarketProducts are compared successfully!");
+	}
+}
+
+class Basket_Remove_Enhanced implements Runnable {
+    @Override
+    public void run() {
+        Basket myBasket = new Basket();
+        myBasket.add(new Egg("organic Eggs",5,380));
+        myBasket.add(new Fruit("Random fruit",1.1,340));
+        myBasket.add(new Fruit("Blue Berry",1.5,380));
+        myBasket.add(new Fruit("Green Berry",1.5,380));
+        myBasket.add(new Fruit("Random fruit",1.1,340));
+        myBasket.add(new Fruit("red Berry",1.5,380));
+        myBasket.add(new Fruit("Random fruit",1.1,340));
+        Boolean a = myBasket.remove(new Fruit("Random fruit",1.1,340));
+        Boolean b = myBasket.remove(new Egg("Green Berry",3,350));
+        if(!a || b){
+            throw new AssertionError("Expected: " + "a=true & b=false"
+                    + " but obtained: " + "a=" + a + " & b=" + b);
+        }
+        else 
+        {
+        	myBasket.remove(new Fruit("Random fruit",1.1,340));
+        	for (int i = 0; i < 5; i++) {
+        		if (myBasket.getProducts()[i] == null) {
+        			throw new AssertionError("There was a problem with removing an element near the middle of the basket");
+        		}
+        	}
+        	if (myBasket.getProducts()[1].equals(new Fruit("Random fruit",1.1,340))){
+        		throw new AssertionError("Did not remove first occurence of given MarketProduct!");
+        	}
+        }
+        System.out.println("Basket enhanced remove tests passed.");
+    }
+}
+
 public class A1_Minitester {
     // To skip running some tests, just comment them out below.
     static String[] tests = {
+    		"assignment1.Basket_Remove_Enhanced",
+    	"assignment1.Basket_NullComparison",
+    	"assignment1.Basket_getProducts",
+    	"assignment1.Basket_DifferentComparison",
         "assignment1.Basket_JamTax",
 "assignment1.Basket_NumOfProduct",
 "assignment1.Basket_Remove",
