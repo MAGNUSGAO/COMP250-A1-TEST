@@ -1,8 +1,72 @@
 package assignment1;
 
-
 import java.util.Arrays;
-import java.util.Locale;
+
+/**
+ * Requirements checklist:
+ * 
+ * Abstract MarketProduct
+ * private String name
+ * public MarketProduct(String name) initializes name
+ * public final String getName() retrieves name of this MarketProduct
+ * public abstract int getCost() determines the cost on a product specific basis
+ * public abstract boolean equals(Object o) checks for equality on a product specific basis
+ * 
+ * ---
+ * Subclasses of MarketProduct:
+ * 
+ * Egg 
+ * private int numerOfEggs
+ * private int pricePerDozen (in cents like all other prices)
+ * public Egg(String name, int numberOfEggs, int pricePerDozen) initializes corresponding fields
+ * public int getCost() 4 eggs at 380 cents/dozen => 126 cents (int) (rounded down) (no overflows)
+ * public boolean equals(Object o) true if all of type, name, cost and number match, otherwise false
+ * 
+ * Fruit
+ * private double weight (kg)
+ * private int pricePerKg (cents)
+ * public Fruit(String name, double weight, int pricePerKg) initializes corresponding fields
+ * public int getCost() 1.25 kgs at 530 cents/kg => 662 cents (int)
+ * public boolean equals(Object o) true if all of type, name, weight and cost match, otherwise false
+ * 
+ * Jam
+ * private int numberOfJars
+ * private int pricePerJar (cents)
+ * public Jam(String name, int numberOfJars, int pricePerJar) initializes corresponding fields
+ * public int getCost() 2 jars at 475 cents/jar => 950 cents
+ * public boolean equals(Object o) true if all of type, name, number and cost match, otherwise false
+ *
+ * SeasonalFruit
+ * public SeasonalFruit(String name, double weight, int pricePerKg) initializes corresponding fields
+ * public int getCost() (15% discount) 0.5 kgs at 480 cents/kg => 204 cents
+ * ---
+ * 
+ * Basket
+ * private MarketProduct[] productsInBasket
+ * public Basket() initializes empty array
+ * public getProducts() returns *shallow copy* of the array
+ * public add(MarketProduct p) adds after all other elements in array
+ * public boolean remove(MarketProduct p) removes first instance and returns true or returns false if not found
+ * public clear() empties the array
+ * public int getNumProducts() self explanatory
+ * public int getSubTotal() returns cost (cents) of all products in basket
+ * public int getTotalTax() returns taxes e.g. 15% of all jam products in cents and rounded down
+ * public String toString() already tested extensively
+ * 
+ * Customer
+ * private String name
+ * private int balance (cents)
+ * private Basket basket
+ * public Customer(String name, int initialBalance)
+ * public String getName()
+ * public int getBalance()
+ * public Basket getBasket() returns a reference to the Basket
+ * public addFunds(int amount) throws IllegalArgumentException if input is negative
+ * public addToBasket(MarketProduct p)
+ * public boolean removeFromBasket(MarketProduct p) true if element removed, else false
+ * public String checkOut() throws IllegalStateException if balance cannot cover costm else returns receipt, customer is charged, basket is cleared
+ * 
+ */
 
 class Basket_JamTax implements Runnable{
     @Override
@@ -801,11 +865,11 @@ class Basket_Remove_Enhanced implements Runnable {
 public class A1_Minitester {
     // To skip running some tests, just comment them out below.
     static String[] tests = {
-    		"assignment1.Basket_Remove_Enhanced",
-    	"assignment1.Basket_NullComparison",
-    	"assignment1.Basket_getProducts",
-    	"assignment1.Basket_DifferentComparison",
-        "assignment1.Basket_JamTax",
+"assignment1.Basket_Remove_Enhanced",
+"assignment1.Basket_NullComparison",
+"assignment1.Basket_getProducts",
+"assignment1.Basket_DifferentComparison",
+"assignment1.Basket_JamTax",
 "assignment1.Basket_NumOfProduct",
 "assignment1.Basket_Remove",
 "assignment1.Basket_add",
@@ -835,13 +899,12 @@ public class A1_Minitester {
 "assignment1.fullBasket",
 "assignment1.Customer_checkOutReceipt_products_0",
 "assignment1.Basket_toString_two_decimals",
- "assignment1.fullBasket_2",
+"assignment1.fullBasket_2",
 "assignment1.test_Basket_toString",
 "assignment1.test_Basket_Jam_toString",
-            "assignment1.Jam_Equal1",
+"assignment1.Jam_Equal1",
 "assignment1.Jam_Equal2",
-            "assignment1.Basket_Remove2"
-
+"assignment1.Basket_Remove2"
     };
     public static void main(String[] args) {
         int numPassed = 0;
