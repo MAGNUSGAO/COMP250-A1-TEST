@@ -4,7 +4,7 @@
 - Otherwise, happy coding and debugging!
 # How to Use
 - You may clone this repo to your Intellij or your preferred IDE. If you aren't familiar with Git, our amazing TA Sasha made a tutorial https://www.youtube.com/playlist?list=PLFvevpoGcNCvjyTjOfPhzqjgb-L_WdX8r
-- Worst case scenario, you may also copy paste the code onto a .java file under assignment1. It's not recommended since you may miss something, but it's quick.
+- Worst case scenario, you may also copy paste the code onto a .java file under assignment1. It's not recommended since you might miss something, but it's quicker than the last method.
 - If you found an error in the tester, feel free to email me at MAGNUSGAO2@GMAIL.COM. 
 - You may also add new tests and create pull requests. I will check my inbox every 2 hours from 9am EST to 1159pm EST. 
 - Happy coding and debugging!
