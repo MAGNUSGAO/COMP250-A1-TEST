@@ -823,7 +823,7 @@ class SeasonalFruit_Equals2 implements Runnable {
 			throw new AssertionError("Expected SeasonalFruit and Fruit with different final cost to be NOT equal");
 		}
 		else 
-			System.out.println("SeasonalFruit_Equals2 test passed!");
+			System.out.println("SeasonalFruit_Equals2 test passed.\\nYour attention to detail is bananas!");
 	}
 }
 
