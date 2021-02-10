@@ -689,7 +689,7 @@ class Basket_Remove2 implements Runnable {
         int difference = originalNumberOfProducts - numberOfProducts;
         if(!a || !b){
 
-            throw new AssertionError("Expected: " + "a=true & b=false"
+            throw new AssertionError("Expected: " + "a=true & b=true"
                     + " but obtained: " + "a=" + a + " & b=" + b);
             //test if there are nulls in the array
         } else if (numberOfProducts < (myBasket.getProducts().length)){
