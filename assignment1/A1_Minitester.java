@@ -822,13 +822,24 @@ class SeasonalFruit_Equals2 implements Runnable {
 			throw new AssertionError("Expected SeasonalFruit and Fruit with different final cost to be NOT equal");
 		}
 		else 
-			System.out.println("SeasonalFruit_Equals2 test passed.\nYour attention to detail is bananas!");
+			System.out.println("SeasonalFruit_Equals2 test passed. Your attention to detail is bananas!");
 	}
 }
 
-class Customer_CheckOut implements Runnable {
+class Customer_CheckOutClear implements Runnable {
 	public void run() {
+		Customer bob = new Customer("Bob", 2000);
+		bob.addToBasket(new Egg("Brown eggs", 12, 350));
+		bob.addToBasket(new Fruit("Apples", 1, 200));
+		bob.addToBasket(new Jam("Apricot Jam", 1, 500));
 		
+		bob.checkOut();
+		int numProducts = bob.getBasket().getNumOfProducts();
+		if (numProducts != 0) {
+			throw new AssertionError("After checkout: expected 0 products in basket, found " + numProducts + " products");
+		}
+		else
+			System.out.println("Customer_CheckOutClear test passed.");
 	}
 }
 
@@ -876,7 +887,8 @@ public class A1_Minitester {
 "assignment1.Jam_Equal2",
 "assignment1.Basket_Remove2",
 "assignment1.SeasonalFruit_Equals1",
-"assignment1.SeasonalFruit_Equals2"
+"assignment1.SeasonalFruit_Equals2",
+"assignment1.Customer_CheckOutClear"
     };
     public static void main(String[] args) {
         int numPassed = 0;
