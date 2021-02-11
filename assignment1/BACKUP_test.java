@@ -1,7 +1,7 @@
 package assignment1;
 import java.util.Arrays;
 
-public class test {
+public class BACKUP_test {
   // Test the output of Basket toString
     // This method tests whether the program outputs "-" for prices when a product's price is 0 (aka Free!)
     public static void test_Basket_toString() {
