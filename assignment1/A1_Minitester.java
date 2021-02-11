@@ -1,8 +1,7 @@
 package assignment1;
 
-
 import java.util.Arrays;
-import java.util.Locale;
+
 
 class Basket_JamTax implements Runnable{
     @Override
@@ -534,7 +533,6 @@ class fullBasket_2 implements Runnable {
 /*class fullBasket_2 implements Runnable {
     @Override
     public void run() {
-
     }
 }*/
 
@@ -689,7 +687,7 @@ class Basket_Remove2 implements Runnable {
         int difference = originalNumberOfProducts - numberOfProducts;
         if(!a || !b){
 
-            throw new AssertionError("Expected: " + "a=true & b=false"
+            throw new AssertionError("Expected: " + "a=true & b=true"
                     + " but obtained: " + "a=" + a + " & b=" + b);
             //test if there are nulls in the array
         } else if (numberOfProducts < (myBasket.getProducts().length)){
@@ -798,14 +796,61 @@ class Basket_Remove_Enhanced implements Runnable {
     }
 }
 
+class SeasonalFruit_Equals1 implements Runnable {
+	public void run() {
+		// Different price per weight, same final cost
+		SeasonalFruit fruit1 = new SeasonalFruit("Apples", 1, 177);
+		Fruit fruit2 = new Fruit("Apples", 1, 150);
+		
+		boolean comp = fruit2.equals(fruit1);
+		if (!comp) {
+			throw new AssertionError("Expected SeasonalFruit and Fruit with same name and cost to be equal");
+		}
+		else
+			System.out.println("SeasonalFruit_Equals1 test passed!");
+	}
+}
+
+class SeasonalFruit_Equals2 implements Runnable {
+	public void run() {
+		// Same price per weight, different final cost
+		SeasonalFruit fruit1 = new SeasonalFruit("Apples", 1, 150);
+		Fruit fruit2 = new Fruit("Apples", 1, 150);
+		
+		boolean comp = fruit2.equals(fruit1);
+		if (comp) {
+			throw new AssertionError("Expected SeasonalFruit and Fruit with different final cost to be NOT equal");
+		}
+		else 
+			System.out.println("SeasonalFruit_Equals2 test passed. Your attention to detail is bananas!");
+	}
+}
+
+class Customer_CheckOutClear implements Runnable {
+	public void run() {
+		Customer bob = new Customer("Bob", 2000);
+		bob.addToBasket(new Egg("Brown eggs", 12, 350));
+		bob.addToBasket(new Fruit("Apples", 1, 200));
+		bob.addToBasket(new Jam("Apricot Jam", 1, 500));
+		
+		bob.checkOut();
+		int numProducts = bob.getBasket().getNumOfProducts();
+		if (numProducts != 0) {
+			throw new AssertionError("After checkout: expected 0 products in basket, found " + numProducts + " products");
+		}
+		else
+			System.out.println("Customer_CheckOutClear test passed.");
+	}
+}
+
 public class A1_Minitester {
     // To skip running some tests, just comment them out below.
     static String[] tests = {
-    		"assignment1.Basket_Remove_Enhanced",
-    	"assignment1.Basket_NullComparison",
-    	"assignment1.Basket_getProducts",
-    	"assignment1.Basket_DifferentComparison",
-        "assignment1.Basket_JamTax",
+"assignment1.Basket_Remove_Enhanced",
+"assignment1.Basket_NullComparison",
+"assignment1.Basket_getProducts",
+"assignment1.Basket_DifferentComparison",
+"assignment1.Basket_JamTax",
 "assignment1.Basket_NumOfProduct",
 "assignment1.Basket_Remove",
 "assignment1.Basket_add",
@@ -835,13 +880,15 @@ public class A1_Minitester {
 "assignment1.fullBasket",
 "assignment1.Customer_checkOutReceipt_products_0",
 "assignment1.Basket_toString_two_decimals",
- "assignment1.fullBasket_2",
+"assignment1.fullBasket_2",
 "assignment1.test_Basket_toString",
 "assignment1.test_Basket_Jam_toString",
-            "assignment1.Jam_Equal1",
+"assignment1.Jam_Equal1",
 "assignment1.Jam_Equal2",
-            "assignment1.Basket_Remove2"
-
+"assignment1.Basket_Remove2",
+"assignment1.SeasonalFruit_Equals1",
+"assignment1.SeasonalFruit_Equals2",
+"assignment1.Customer_CheckOutClear"
     };
     public static void main(String[] args) {
         int numPassed = 0;
