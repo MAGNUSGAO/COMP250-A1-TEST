@@ -797,6 +797,36 @@ class Basket_Remove_Enhanced implements Runnable {
     }
 }
 
+class SeasonalFruit_Equals1 implements Runnable {
+	public void run() {
+		// Different price per weight, same final cost
+		SeasonalFruit fruit1 = new SeasonalFruit("Apples", 1, 177);
+		Fruit fruit2 = new Fruit("Apples", 1, 150);
+		
+		boolean comp = fruit2.equals(fruit1);
+		if (!comp) {
+			throw new AssertionError("Expected SeasonalFruit and Fruit with same name and cost to be equal");
+		}
+		else
+			System.out.println("SeasonalFruit_Equals1 test passed!");
+	}
+}
+
+class SeasonalFruit_Equals2 implements Runnable {
+	public void run() {
+		// Same price per weight, different final cost
+		SeasonalFruit fruit1 = new SeasonalFruit("Apples", 1, 150);
+		Fruit fruit2 = new Fruit("Apples", 1, 150);
+		
+		boolean comp = fruit2.equals(fruit1);
+		if (comp) {
+			throw new AssertionError("Expected SeasonalFruit and Fruit with different final cost to be NOT equal");
+		}
+		else 
+			System.out.println("SeasonalFruit_Equals2 test passed.\\nYour attention to detail is bananas!");
+	}
+}
+
 public class A1_Minitester {
     // To skip running some tests, just comment them out below.
     static String[] tests = {
@@ -839,7 +869,9 @@ public class A1_Minitester {
 "assignment1.test_Basket_Jam_toString",
 "assignment1.Jam_Equal1",
 "assignment1.Jam_Equal2",
-"assignment1.Basket_Remove2"
+"assignment1.Basket_Remove2",
+"assignment1.SeasonalFruit_Equals1",
+"assignment1.SeasonalFruit_Equals2"
     };
     public static void main(String[] args) {
         int numPassed = 0;
