@@ -198,6 +198,26 @@ class Customer_checkOutBalance implements Runnable{
     }
 }
 
+class Customer_checkOutBalance2 implements Runnable{
+    @Override
+    public void run() {
+        try{
+            Customer cust  = new Customer("Alice",380);
+            cust.addToBasket(new Egg("organic Eggs",12,380));
+            System.out.println("Balance before checkout: " + cust.getBalance());
+            cust.checkOut();
+            int newBalance = cust.getBalance();
+            System.out.println("Balance after checkout: " + newBalance);
+            if (newBalance != 0){
+                throw new AssertionError("checkOut did not return correct receipt.");
+            }
+        }catch (IllegalStateException e){
+            throw new AssertionError("Unexpected IllegalStateException raised.");
+        }
+        System.out.println("Test passed.");
+    }
+}
+
 
 class Customer_checkOutException implements Runnable{
     @Override
@@ -862,6 +882,7 @@ public class A1_Minitester {
 		"assignment1.Customer_addFundsException",
 		"assignment1.Customer_addToBasket",
 		"assignment1.Customer_checkOutBalance",
+        "assignment1.Customer_checkOutBalance2",
 		"assignment1.Customer_checkOutException",
 		"assignment1.Customer_checkOutReceipt",
 		"assignment1.Customer_getBalance",
