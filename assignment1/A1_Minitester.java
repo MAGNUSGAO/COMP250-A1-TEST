@@ -1,5 +1,6 @@
 package assignment1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -846,52 +847,54 @@ class Customer_CheckOutClear implements Runnable {
 public class A1_Minitester {
     // To skip running some tests, just comment them out below.
     static String[] tests = {
-"assignment1.Basket_Remove_Enhanced",
-"assignment1.Basket_NullComparison",
-"assignment1.Basket_getProducts",
-"assignment1.Basket_DifferentComparison",
-"assignment1.Basket_JamTax",
-"assignment1.Basket_NumOfProduct",
-"assignment1.Basket_Remove",
-"assignment1.Basket_add",
-"assignment1.Basket_clear",
-"assignment1.Basket_getSubTotal",
-"assignment1.Basket_toString",
-"assignment1.Customer_addFunds",
-"assignment1.Customer_addFundsException",
-"assignment1.Customer_addToBasket",
-"assignment1.Customer_checkOutBalance",
-"assignment1.Customer_checkOutException",
-"assignment1.Customer_checkOutReceipt",
-"assignment1.Customer_getBalance",
-"assignment1.Customer_getBasket",
-"assignment1.Customer_getName",
-"assignment1.Customer_removeFromBasket",
-"assignment1.Egg_Cost",
-"assignment1.Egg_Equal",
-"assignment1.Egg_Name",
-"assignment1.Fruit_Cost",
-"assignment1.Fruit_Equal",
-"assignment1.Jam_Cost",
-"assignment1.SeasonalFruit_Cost",
-"assignment1.oneEggCost",
-"assignment1.oneEggCostRoundDown",
-"assignment1.SeasonalFruit_Cost_1",
-"assignment1.fullBasket",
-"assignment1.Customer_checkOutReceipt_products_0",
-"assignment1.Basket_toString_two_decimals",
-"assignment1.fullBasket_2",
-"assignment1.test_Basket_toString",
-"assignment1.test_Basket_Jam_toString",
-"assignment1.Jam_Equal1",
-"assignment1.Jam_Equal2",
-"assignment1.Basket_Remove2",
-"assignment1.SeasonalFruit_Equals1",
-"assignment1.SeasonalFruit_Equals2",
-"assignment1.Customer_CheckOutClear"
+		"assignment1.Basket_Remove_Enhanced",
+		"assignment1.Basket_NullComparison",
+		"assignment1.Basket_getProducts",
+		"assignment1.Basket_DifferentComparison",
+		"assignment1.Basket_JamTax",
+		"assignment1.Basket_NumOfProduct",
+		"assignment1.Basket_Remove",
+		"assignment1.Basket_add",
+		"assignment1.Basket_clear",
+		"assignment1.Basket_getSubTotal",
+		"assignment1.Basket_toString",
+		"assignment1.Customer_addFunds",
+		"assignment1.Customer_addFundsException",
+		"assignment1.Customer_addToBasket",
+		"assignment1.Customer_checkOutBalance",
+		"assignment1.Customer_checkOutException",
+		"assignment1.Customer_checkOutReceipt",
+		"assignment1.Customer_getBalance",
+		"assignment1.Customer_getBasket",
+		"assignment1.Customer_getName",
+		"assignment1.Customer_removeFromBasket",
+		"assignment1.Egg_Cost",
+		"assignment1.Egg_Equal",
+		"assignment1.Egg_Name",
+		"assignment1.Fruit_Cost",
+		"assignment1.Fruit_Equal",
+		"assignment1.Jam_Cost",
+		"assignment1.SeasonalFruit_Cost",
+		"assignment1.oneEggCost",
+		"assignment1.oneEggCostRoundDown",
+		"assignment1.SeasonalFruit_Cost_1",
+		"assignment1.fullBasket",
+		"assignment1.Customer_checkOutReceipt_products_0",
+		"assignment1.Basket_toString_two_decimals",
+		"assignment1.fullBasket_2",
+		"assignment1.test_Basket_toString",
+		"assignment1.test_Basket_Jam_toString",
+		"assignment1.Jam_Equal1",
+		"assignment1.Jam_Equal2",
+		"assignment1.Basket_Remove2",
+		"assignment1.SeasonalFruit_Equals1",
+		"assignment1.SeasonalFruit_Equals2",
+		"assignment1.Customer_CheckOutClear"
     };
+    
     public static void main(String[] args) {
         int numPassed = 0;
+        ArrayList<String> failedTests = new ArrayList<String>(tests.length);
         for(String className: tests)    {
             System.out.printf("%n======= %s =======%n", className);
             System.out.flush();
@@ -901,11 +904,20 @@ public class A1_Minitester {
                 numPassed++;
             } catch (AssertionError e) {
                 System.out.println(e);
+                failedTests.add(className);
             } catch (Exception e) {
                 e.printStackTrace(System.out);
+                failedTests.add(className);
             }
         }
         System.out.printf("%n%n%d of %d tests passed.%n", numPassed, tests.length);
+        if (failedTests.size() > 0) {
+        	System.out.println("Failed test(s):");
+	        for (String className : failedTests) {
+	        	int dotIndex = className.indexOf('.');
+	        	System.out.println("  " + className.substring(dotIndex+1));
+	        }
+        }
 
         if(numPassed == tests.length){
             System.out.println("All clear! Now get some rest.");
