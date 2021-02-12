@@ -817,6 +817,19 @@ class Basket_Remove_Enhanced implements Runnable {
     }
 }
 
+class BasketRemoveOnEmpty implements Runnable {
+	public void run() {
+		try {
+			Basket myBasket = new Basket();
+			Fruit apple = new Fruit("Apple", 3, 150);
+			myBasket.remove(apple);
+		} catch (NegativeArraySizeException e) {
+			throw new NegativeArraySizeException("\n" + "Cannot create an array of negative size" + "\n" + "Expected value: false");
+		}
+		System.out.println("Basket remove on empty test passed!");
+	}
+}
+
 class SeasonalFruit_Equals1 implements Runnable {
 	public void run() {
 		// Different price per weight, same final cost
@@ -908,6 +921,7 @@ public class A1_Minitester {
 		"assignment1.Jam_Equal1",
 		"assignment1.Jam_Equal2",
 		"assignment1.Basket_Remove2",
+		"assignment1.BasketRemoveOnEmpty",
 		"assignment1.SeasonalFruit_Equals1",
 		"assignment1.SeasonalFruit_Equals2",
 		"assignment1.Customer_CheckOutClear"
