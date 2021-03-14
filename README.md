@@ -2,6 +2,7 @@
 # Disclaimers
 - Please only add TEST CODE here, not actual assignment code. If you accidentally pushed your assignment code, please delete ASAP to avoid any inconveniences.
 - Otherwise, happy coding and debugging!
+- The link to assignment 2's tester is https://github.com/Gadiguibou/comp-250-assignment-2-tester
 # How to Use
 - A1_Minitester.java is the latest version of the tester. The Backup_Tester is incomplete. All tests in Backup_tester are in A1_Minitester.java. 
 - You may clone this repo to your Intellij or your preferred IDE. If you aren't familiar with Git, our amazing TA Sasha made a tutorial https://www.youtube.com/playlist?list=PLFvevpoGcNCvjyTjOfPhzqjgb-L_WdX8r
