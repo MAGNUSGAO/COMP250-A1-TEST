@@ -877,6 +877,27 @@ class Customer_CheckOutClear implements Runnable {
 	}
 }
 
+class SubTotal_ArithmeticOverflowException implements Runnable{
+    @Override
+    public void run() {
+    	try {
+            Customer cust = new Customer("Alice", 10);
+            cust.addToBasket(new Egg("Brown eggs", 1, 2147483647));
+            cust.addToBasket(new Fruit("Apples", 1, 2147483647));
+          
+            throw new AssertionError("The total cost of the basket is " + cust.getBasket().getSubTotal());
+    	} catch (Exception e){
+    		System.out.println("Sub total cost Integer overflow test passed.");
+    	}
+    }
+    
+    /* 
+     * I do not think a similar test case is required for totalTax() and total() 
+     * since the latter is a linear combination of SubTotal() and the former is
+     * quite too complicated to properly handle. 
+     */ 
+}
+
 public class A1_Minitester {
     // To skip running some tests, just comment them out below.
     static String[] tests = {
@@ -924,7 +945,8 @@ public class A1_Minitester {
 		"assignment1.BasketRemoveOnEmpty",
 		"assignment1.SeasonalFruit_Equals1",
 		"assignment1.SeasonalFruit_Equals2",
-		"assignment1.Customer_CheckOutClear"
+		"assignment1.Customer_CheckOutClear",
+		"assignment1.SubTotal_ArithmeticOverflowException"
     };
     
     public static void main(String[] args) {
@@ -957,5 +979,6 @@ public class A1_Minitester {
         if(numPassed == tests.length){
             System.out.println("All clear! Now get some rest.");
         }
+	
     }
 }
